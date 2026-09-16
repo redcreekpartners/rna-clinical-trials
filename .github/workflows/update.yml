@@ -1,0 +1,49 @@
+name: Update trials
+
+# ClinicalTrials.gov updates records continuously; once a day is plenty for a
+# list whose unit of change is a trial moving phase or status.
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-trials
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Exits non-zero, leaving data/trials.json untouched, if any search fails
+      # or the list shrinks by more than a fifth overnight. A red run here is the
+      # signal; the page's "last changed" date simply stops moving.
+      - name: Fetch and classify
+        run: python scripts/update.py
+
+      # No commit on a quiet day: update.py only rewrites the file when the list
+      # itself changed.
+      - name: Commit if anything changed
+        run: |
+          if [ -z "$(git status --porcelain data/)" ]; then
+            echo "No change in data/ — nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "data: refresh trials $(date -u +%Y-%m-%d)"
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main

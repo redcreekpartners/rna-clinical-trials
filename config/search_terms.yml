@@ -1,0 +1,118 @@
+# Every term is sent to ClinicalTrials.gov as an intervention search
+# (query.intr), interventional studies only. A trial matching several terms is
+# fetched once.
+#
+# Order matters only for de-duplication: the first term to return a trial is
+# the one recorded against it first.
+
+# Terms chosen for trial registrations, which name drugs and modalities rather
+# than describe mechanisms.
+ours:
+  - siRNA
+  - small interfering RNA
+  - antisense oligonucleotide
+  - ASO
+  - mRNA vaccine
+  - messenger RNA
+  - self-amplifying RNA
+  - saRNA
+  - circular RNA
+  - microRNA
+  - miRNA
+  - RNA aptamer
+  - aptamer
+  - RNA editing
+  - base editing
+  - CRISPR
+  - guide RNA
+  - lipid nanoparticle
+  - GalNAc
+  - exon skipping
+  - splice-switching
+  - RNA interference
+  - oligonucleotide therapy
+  - mRNA therapy
+
+# The RNA Therapeutics Monitor's own topical vocabulary (McRae Lab, MIT licence,
+# see LICENSE-rna-monitor), copied at commit 1d317c2. Its exclusion group is left
+# out: those terms describe what to reject, not what to search for.
+monitor:
+  - mRNA therapeutic
+  - messenger RNA therapeutic
+  - modified mRNA therapeutic
+  - modRNA therapeutic
+  - self-amplifying RNA
+  - saRNA therapeutic
+  - circular RNA therapeutic
+  - circRNA therapeutic
+  - small interfering RNA therapeutic
+  - siRNA therapeutic
+  - antisense oligonucleotide
+  - ASO therapeutic
+  - RNA aptamer
+  - therapeutic aptamer
+  - RNA editing therapeutic
+  - guide RNA therapeutic
+  - CRISPR RNA delivery
+  - CRISPR therapeutic
+  - CRISPR gene editing therapeutic
+  - gene editing therapeutic RNA
+  - in vivo gene editing RNA delivery
+  - base editing therapeutic
+  - base editor RNA delivery
+  - microRNA therapeutic
+  - miRNA therapeutic
+  - RNA vaccine
+  - RNA nanotechnology
+  - RNA origami
+  - lipid nanoparticle RNA
+  - LNP RNA delivery
+  - GalNAc siRNA
+  - GalNAc oligonucleotide
+  - extracellular vesicle RNA delivery
+  - exosome RNA delivery
+  - virus-like particle RNA
+  - VLP RNA delivery
+  - polymeric nanoparticle RNA
+  - RNA delivery
+  - endosomal escape RNA
+  - extrahepatic RNA delivery
+  - organ-selective RNA delivery
+  - RNA stability therapeutic
+  - RNA immunogenicity therapeutic
+  - innate immune activation RNA therapeutic
+  - RNA modification therapeutic
+  - RNA formulation
+  - RNA manufacturing
+  - in vitro transcription therapeutic RNA
+  - RNA purification manufacturing
+  - RNA capping therapeutic
+  - RNA quality control manufacturing
+  - oligonucleotide drug
+  - nucleic acid medicine
+  - RNA medicine
+  - programmable RNA therapeutic
+  - post-transcriptional gene therapy
+
+# ClinicalTrials.gov ORs the words of an unquoted multi-word query, so these match
+# on a common word alone: "nucleic acid medicine" returns ~2,000 trials while the
+# quoted phrase returns none. They are still searched, for recall, but a trial
+# found only through one of them is flagged loose-term-only and excluded unless
+# something else identifies it as an RNA trial.
+loose:
+  - nucleic acid medicine
+  - RNA medicine
+  - RNA delivery
+  - RNA formulation
+  - RNA manufacturing
+  - RNA stability therapeutic
+  - RNA modification therapeutic
+  - RNA immunogenicity therapeutic
+  - oligonucleotide drug
+  - oligonucleotide therapy
+  - post-transcriptional gene therapy
+  - in vitro transcription therapeutic RNA
+  - RNA purification manufacturing
+  - RNA quality control manufacturing
+  - mRNA therapy
+  - messenger RNA

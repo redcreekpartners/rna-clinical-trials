@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RNA Clinical Trials</title>
+  <meta name="description" content="Interventional clinical trials of RNA therapeutics from ClinicalTrials.gov, grouped with the RNA Therapeutics Monitor's modality categories and refreshed daily." />
+  <style>
+    @font-face { font-family: 'DM Sans'; font-style: normal; font-weight: 300 600;
+      font-display: swap; src: url('fonts/dm-sans.woff2') format('woff2'); }
+    @font-face { font-family: 'Raleway'; font-style: normal; font-weight: 400 700;
+      font-display: swap; src: url('fonts/raleway.woff2') format('woff2'); }
+    :root {
+      --navy: #0d1b3e; --blue: #1a56db; --blue-light: #3b7de8; --purple: #7c3aed;
+      --white: #ffffff; --off-white: #f4f6fb; --gray-light: #dde3f0; --gray: #6b7280;
+      --text: #1e2640;
+      --font-display: 'Raleway', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.7; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { color: var(--blue-light); text-decoration: underline; }
+    h1, h2, h3 { font-family: var(--font-display); color: var(--navy); line-height: 1.25; }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+    .page-hero { background: var(--navy); color: var(--white); padding: 3rem 1.5rem; }
+    .page-hero h1 { color: var(--white); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; }
+    .page-hero p { color: rgba(255,255,255,0.75); margin-top: 0.5rem; font-size: 1.05rem; }
+    .section { padding: 3rem 1.5rem 4rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .ct-updated { font-size: 0.85rem; color: var(--gray); margin-bottom: 0.4rem; }
+    .ct-updated:empty { display: none; }
+
+    .site-foot { border-top: 1px solid var(--gray-light); padding: 1.6rem 1.5rem 2.4rem;
+      font-size: 0.82rem; color: var(--gray); line-height: 1.7; }
+    .site-foot p + p { margin-top: 0.4rem; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+  <style>
+    /* One dashboard block rather than three loose panels: the pipeline holds the
+       left column at full height, status and the year series stack on the right,
+       and the header carries the live count and the controls. Every chart is also
+       a filter — click to select, click again to clear — and all three redraw
+       against the other filters so the shape you are reading stays honest. */
+    .ct-wrap { max-width: 960px; margin: 0 auto; }
+
+    .ct-intro { font-size: 1.16rem; line-height: 1.65; color: var(--text);
+      max-width: 40rem; margin-bottom: 0.5rem; }
+    .ct-intro b { font-family: var(--font-display); font-weight: 700; color: var(--navy);
+      font-variant-numeric: tabular-nums; }
+    .ct-intro .accent { color: var(--blue); }
+    .ct-intro { margin-bottom: 1.9rem; }
+
+    .ct-dash { border: 1px solid var(--gray-light); border-radius: 12px; background: var(--white);
+      overflow: hidden; margin-bottom: 2.2rem; }
+
+    .ct-head { display: flex; flex-wrap: wrap; gap: 0.9rem 1.2rem; align-items: center;
+      justify-content: space-between; padding: 1rem 1.3rem; background: var(--off-white);
+      border-bottom: 1px solid var(--gray-light); }
+    .ct-tally { display: flex; align-items: baseline; gap: 0.55rem; }
+    .ct-tally .big { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700;
+      color: var(--navy); line-height: 1; font-variant-numeric: tabular-nums; }
+    .ct-tally .lab { font-size: 0.9rem; color: var(--gray); }
+    .ct-tools { display: flex; align-items: center; gap: 0.7rem; }
+    .ct-tools select { font-family: var(--font-body); font-size: 0.86rem; color: var(--text);
+      padding: 0.42rem 0.6rem; border: 1px solid var(--gray-light); border-radius: 7px;
+      background: var(--white); }
+    .ct-clear { font-family: var(--font-body); font-size: 0.84rem; color: var(--blue);
+      background: var(--white); border: 1px solid var(--gray-light); border-radius: 7px;
+      padding: 0.42rem 0.75rem; cursor: pointer; white-space: nowrap; }
+    .ct-clear:hover { border-color: var(--blue); background: #eef3fd; }
+    .ct-clear[hidden] { display: none; }
+
+    .ct-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .ct-cell { padding: 1.15rem 1.3rem 1.3rem; }
+    .ct-cell.top { grid-column: 1 / -1; border-bottom: 1px solid var(--gray-light); }
+    .ct-cell.r1 { border-right: 1px solid var(--gray-light); }
+    .ct-cell.bottom { grid-column: 1 / -1; border-top: 1px solid var(--gray-light); }
+    .ct-cell h2 { font-size: 0.98rem; margin-bottom: 0.2rem; }
+    .ct-cell .hint { font-size: 0.75rem; color: var(--gray); line-height: 1.5; margin-bottom: 1rem; }
+
+    .ct-phase-row { display: grid; grid-template-columns: 118px 1fr 62px; align-items: center;
+      gap: 0 0.9rem; width: 100%; background: none; border: 0; padding: 0.28rem 0;
+      font: inherit; color: inherit; text-align: left; cursor: pointer; }
+    .ct-phase-row .lbl { font-size: 0.83rem; color: var(--text); text-align: right; white-space: nowrap; }
+    .ct-phase-row .bar { display: block; background: var(--off-white); border-radius: 4px;
+      height: 28px; overflow: hidden; }
+    .ct-phase-row .fill { display: block; height: 100%; border-radius: 4px; min-width: 3px;
+      transition: width 0.35s cubic-bezier(.4,0,.2,1); }
+    .ct-phase-row .val { font-size: 0.84rem; font-weight: 700; color: var(--navy);
+      font-variant-numeric: tabular-nums; }
+    .ct-phase-row .pct { font-size: 0.68rem; color: var(--gray); font-weight: 400; margin-left: 0.22rem; }
+    .ct-phase-row:hover .bar { background: #e6ecfa; }
+    .ct-phase-row[aria-pressed="true"] .lbl { color: var(--blue); font-weight: 700; }
+
+    .ct-band { display: flex; height: 30px; border-radius: 6px; overflow: hidden; gap: 2px;
+      margin-bottom: 0.9rem; }
+    .ct-seg { border: 0; padding: 0; cursor: pointer; min-width: 3px;
+      transition: opacity 0.2s, flex-grow 0.35s; }
+    .ct-seg:hover { opacity: 0.78; }
+    .ct-band.picked .ct-seg { opacity: 0.3; }
+    .ct-band.picked .ct-seg[aria-pressed="true"] { opacity: 1; }
+    .ct-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 0.05rem 0.9rem; }
+    .ct-leg { display: grid; grid-template-columns: 10px 1fr auto; align-items: center; gap: 0 0.5rem;
+      background: none; border: 0; padding: 0.2rem 0; font: inherit; text-align: left; cursor: pointer; }
+    .ct-leg .dot { width: 10px; height: 10px; border-radius: 3px; }
+    .ct-leg .nm { font-size: 0.76rem; color: var(--gray); white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; }
+    .ct-leg .qt { font-size: 0.76rem; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+    .ct-leg:hover .nm { color: var(--text); }
+    .ct-leg[aria-pressed="true"] .nm { color: var(--blue); font-weight: 700; }
+
+    .ct-years { position: relative; display: flex; align-items: flex-end; gap: 1.5px;
+      height: 132px; }
+    .ct-years::after { content: ""; position: absolute; left: 0; right: 0; bottom: 22px;
+      height: 1px; background: var(--gray-light); }
+    .ct-year { position: relative; flex: 1; display: flex; flex-direction: column;
+      justify-content: flex-end; align-items: center; gap: 0.3rem; min-width: 0;
+      background: none; border: 0; padding: 0 0 22px; height: 100%;
+      font: inherit; cursor: pointer; }
+    .ct-year .qty { font-size: 0.64rem; font-weight: 700; color: var(--navy);
+      font-variant-numeric: tabular-nums; opacity: 0; transition: opacity 0.2s; }
+    .ct-year:hover .qty, .ct-year[aria-pressed="true"] .qty { opacity: 1; }
+    .ct-year .col { width: 100%; border-radius: 3px 3px 0 0; min-height: 3px;
+      background: var(--blue-light); transition: height 0.35s cubic-bezier(.4,0,.2,1), background 0.2s; }
+    .ct-year:hover .col { background: var(--blue); }
+    .ct-year[aria-pressed="true"] .col { background: var(--navy); }
+    .ct-year.part .col { background: repeating-linear-gradient(135deg,
+      var(--blue-light) 0 4px, #aec6f3 4px 8px); }
+
+    .ct-year .yl { position: absolute; bottom: 0; font-size: 0.62rem; color: var(--gray);
+      font-variant-numeric: tabular-nums; white-space: nowrap; line-height: 18px; }
+    .ct-year .col { border-radius: 2px 2px 0 0; }
+    .ct-year[aria-pressed="true"] .yl { color: var(--blue); font-weight: 700; }
+
+    .ct-listhead { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; align-items: baseline;
+      justify-content: space-between; padding-bottom: 0.7rem; margin-bottom: 0.2rem;
+      border-bottom: 2px solid var(--navy); }
+    .ct-listhead h2 { font-size: 1.2rem; }
+    /* Natural Earth 110m, baked into data/world-map.json at build time so the page
+       pulls in no mapping library and makes no third-party request. Countries with
+       trials are clickable and shaded by volume; the rest are inert background.
+       Colour here is deliberately a weak encoding — the map exists for picking a
+       country, and the exact counts live in the tooltip and the header. */
+    /* Map beside a complete list. The map is for scanning and rough comparison;
+       the list is how you actually pick a country — several are too small to hit
+       on a world map, and a few (Hong Kong, Singapore) have no polygon at this
+       resolution at all and appear as markers. Both drive the same filter. */
+    .ct-geo { display: grid; grid-template-columns: 1fr 210px; gap: 1.3rem; align-items: start; }
+    .ct-map { width: 100%; display: block; }
+    .ct-map svg { width: 100%; height: auto; display: block; }
+    .ct-map path { fill: #eceef2; stroke: var(--white); stroke-width: 0.5;
+      transition: fill 0.25s ease; }
+    .ct-map path.has, .ct-map circle { cursor: pointer; }
+    .ct-map path.has:hover, .ct-map circle:hover { fill: var(--purple) !important; }
+    .ct-map path.sel, .ct-map circle.sel { stroke: var(--navy); stroke-width: 1.4; }
+    .ct-map circle { stroke: var(--white); stroke-width: 0.8; transition: fill 0.25s ease; }
+    .ct-map.picked path.has:not(.sel), .ct-map.picked circle:not(.sel) { opacity: 0.4; }
+
+    .ct-maplegend { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.7rem;
+      font-size: 0.72rem; color: var(--gray); }
+    .ct-ramp { display: flex; gap: 2px; }
+    .ct-ramp i { width: 26px; height: 9px; border-radius: 2px; }
+
+    .ct-colist { max-height: 300px; overflow-y: auto; border: 1px solid var(--gray-light);
+      border-radius: 8px; padding: 0.3rem; }
+    .ct-co { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 0 0.5rem;
+      width: 100%; background: none; border: 0; border-radius: 5px; padding: 0.28rem 0.45rem;
+      font: inherit; color: inherit; text-align: left; cursor: pointer; }
+    .ct-co .nm { font-size: 0.76rem; color: var(--text); white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; }
+    .ct-co .qt { font-size: 0.74rem; color: var(--gray); font-variant-numeric: tabular-nums; }
+    .ct-co:hover { background: var(--off-white); }
+    .ct-co[aria-pressed="true"] { background: var(--navy); }
+    .ct-co[aria-pressed="true"] .nm, .ct-co[aria-pressed="true"] .qt { color: var(--white); }
+    .ct-co .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blue-light); margin-right: 0.35rem; vertical-align: middle; }
+
+    @media (max-width: 760px) { .ct-geo { grid-template-columns: 1fr; }
+      .ct-colist { max-height: 220px; } }
+
+    .ct-count { font-size: 0.84rem; color: var(--gray); margin: 0; }
+    .ct-item { padding: 1.3rem 0; border-bottom: 1px solid var(--gray-light); }
+    .ct-item h3 { font-size: 1rem; line-height: 1.45; font-weight: 600; margin-bottom: 0.45rem; }
+    .ct-item h3 a { color: var(--navy); text-decoration: none; }
+    .ct-item h3 a:hover { color: var(--blue); text-decoration: underline; }
+    .ct-meta { display: flex; flex-wrap: wrap; gap: 0.45rem 0.7rem; align-items: center;
+      font-size: 0.82rem; color: var(--gray); }
+    .ct-drug { font-weight: 600; color: var(--text); }
+    .ct-tag { display: inline-block; padding: 0.12rem 0.58rem; border-radius: 99px;
+      font-size: 0.74rem; font-weight: 600; background: #e8eefb; color: var(--blue); }
+    .ct-status { font-weight: 600; }
+    .ct-status.live { color: #15803d; } .ct-status.done { color: var(--gray); }
+    .ct-status.stop { color: #b91c1c; } .ct-status.quiet { color: #a16207; }
+    .ct-cond { display: block; width: 100%; font-size: 0.82rem; color: var(--gray); margin-top: 0.3rem; }
+    .ct-empty { padding: 2.6rem 0; text-align: center; color: var(--gray); }
+    .ct-more { display: block; width: 100%; margin-top: 1.5rem; padding: 0.8rem; background: var(--white);
+      color: var(--blue); border: 1px solid var(--gray-light); border-radius: 8px;
+      font-family: var(--font-body); font-size: 0.93rem; cursor: pointer; }
+    .ct-more:hover { background: var(--off-white); border-color: var(--blue); }
+    .ct-note { font-size: 0.86rem; color: var(--gray); line-height: 1.75; margin-top: 2.4rem; }
+
+    @media (max-width: 760px) {
+      .ct-grid { grid-template-columns: 1fr; }
+      .ct-cell.r1 { border-right: 0; border-bottom: 1px solid var(--gray-light); }
+      .ct-legend { grid-template-columns: 1fr; }
+      .ct-year .yl { writing-mode: vertical-rl; font-size: 0.6rem; }
+      .ct-intro { font-size: 1.04rem; }
+    }
+  </style>
+</head>
+<body>
+<section class="page-hero">
+  <div class="container">
+    <h1>RNA Clinical Trials</h1>
+    <p>Current status of RNA therapeutics in clinical development</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="ct-wrap">
+
+      <p class="ct-updated" id="ctUpdated"></p>
+      <p class="ct-intro" id="ctIntro">
+        Tracking <b id="ctTotal">&mdash;</b> interventional trials of RNA therapeutics from
+        <b id="ctSponsors">&mdash;</b> sponsors. <b class="accent" id="ctActive">&mdash;</b> are
+        recruiting or under way.
+      </p>
+
+      <div class="ct-dash">
+        <div class="ct-head">
+          <div class="ct-tally">
+            <span class="big" id="ctShown">&mdash;</span>
+            <span class="lab" id="ctShownLab">trials</span>
+          </div>
+          <div class="ct-tools">
+            <label for="ctModality" class="visually-hidden" hidden>Modality</label>
+            <select id="ctModality" aria-label="Filter by modality">
+              <option value="">All modalities</option>
+            </select>
+            <button type="button" class="ct-clear" id="ctClear" hidden>Clear filters</button>
+          </div>
+        </div>
+
+        <div class="ct-grid">
+          <div class="ct-cell top">
+            <h2>Trials by Development Phase</h2>
+            <p class="hint">Select a phase to filter.</p>
+            <div id="ctPhase"></div>
+          </div>
+          <div class="ct-cell r1">
+            <h2>Recruitment Status</h2>
+            <p class="hint">Select a status to filter.</p>
+            <div class="ct-band" id="ctBand"></div>
+            <div class="ct-legend" id="ctLegend"></div>
+          </div>
+          <div class="ct-cell r2">
+            <h2>Trials by Start Year</h2>
+            <p class="hint">Select a year to filter.</p>
+            <div class="ct-years" id="ctYears"></div>
+          </div>
+          <div class="ct-cell bottom">
+            <h2>Trials by Country</h2>
+            <p class="hint" id="ctCountryHint">Select a country to filter.</p>
+            <div class="ct-geo">
+              <div>
+                <div class="ct-map" id="ctMap"></div>
+                <div class="ct-maplegend">
+                  <span>Fewer trials</span>
+                  <span class="ct-ramp" id="ctRamp"></span>
+                  <span>More</span>
+                </div>
+              </div>
+              <div class="ct-colist" id="ctCoList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ct-listhead">
+        <h2 id="ctListTitle">All trials</h2>
+        <p class="ct-count" id="ctCount"></p>
+      </div>
+      <div id="ctList"></div>
+
+      <p class="ct-note">
+        RNA therapeutics trials registered on
+        <a href="https://clinicaltrials.gov/" target="_blank" rel="noopener">ClinicalTrials.gov</a>,
+        refreshed daily. This list is compiled automatically based on the
+        <a href="https://github.com/McRae-Lab/rna-therapeutics-monitor" target="_blank" rel="noopener">RNA Therapeutics Monitor</a>&#x27;s methodology and grouped based on
+        its modality categories. It is not a copy of the Monitor&#x27;s records. It is generated
+        rather than curated, and it is not exhaustive. Trials marked as unknown status have not
+        been updated in over two years by the sponsor.
+      </p>
+
+    </div>
+  </div>
+</section>
+<footer class="site-foot">
+  <div class="container">
+    <p>Trial data from <a href="https://clinicaltrials.gov/" target="_blank" rel="noopener">ClinicalTrials.gov</a>.
+      Modality categories from the <a href="https://github.com/McRae-Lab/rna-therapeutics-monitor" target="_blank" rel="noopener">RNA Therapeutics Monitor</a>
+      (McRae Lab, MIT licence); this project is not affiliated with or endorsed by it.
+      Map from <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth</a> (public domain).</p>
+    <p><a href="https://github.com/redcreekpartners/rna-clinical-trials">Source code, methodology and review spreadsheet</a></p>
+  </div>
+</footer>
+<script>
+(function () {
+  var PHASES = ["Early Phase 1","Phase 1","Phase 1/Phase 2","Phase 2",
+                "Phase 2/Phase 3","Phase 3","Phase 4"];
+  var SHADE  = ["#c8d1ef","#a3b5e8","#7f97de","#5c79d1","#3d5cc6","#1a56db","#0d1b3e"];
+  var STATUS = [
+    ["Recruiting","Recruiting","#15803d"],
+    ["Not Yet Recruiting","Not yet recruiting","#4ade80"],
+    ["Enrolling By Invitation","Enrolling by invite","#86c8a4"],
+    ["Active Not Recruiting","Active, not recruiting","#1a56db"],
+    ["Completed","Completed","#94a3b8"],
+    ["Unknown","Unknown status","#d97706"],
+    ["Suspended","Suspended","#f59e0b"],
+    ["Terminated","Terminated","#b91c1c"],
+    ["Withdrawn","Withdrawn","#e07178"]
+  ];
+  var LIVE = ["Recruiting","Not Yet Recruiting","Enrolling By Invitation","Active Not Recruiting"];
+  var STOP = ["Terminated","Withdrawn","Suspended"];
+  var YEARS_SHOWN = 13;
+
+  var data = [], phase = "", status = "", year = "", country = "", shown = 25;
+  var MAP = null, MAP_BUILT = false, TO_MAP = {}, FROM_MAP = {};
+  // five steps rather than a continuous ramp: the difference between 3 trials and
+  // 5 is not worth a distinct colour, but the difference between 3 and 200 is
+  var RAMP = ["#c5d6f2", "#93b0e6", "#5f86d6", "#2f5bc0", "#14307d"];
+  // The axis is anchored to the data's own timestamp, not the viewer's clock. On
+  // 1 January the browser rolls over before the next sync lands, and taking the
+  // year from the browser would draw an empty hatched column for a year the file
+  // knows nothing about. Everything below — the window, the part-year hatch, the
+  // planned bucket — derives from this, so a new year appears the day the data does.
+  var THIS_YEAR = String(new Date().getFullYear());
+  var WINDOW = [], WINDOW_START = "";
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  };
+
+  Promise.all([
+    fetch("data/trials.json").then(function (r) { return r.json(); }),
+    // the map is decoration around a filter, so a failure here must not take the
+    // page down with it — the country panel just goes quiet
+    fetch("data/world-map.json").then(function (r) { return r.json(); })
+                                   .catch(function () { return null; })
+  ]).then(function (res) {
+    var d = res[0];
+    data = d.records || d;
+    if (d.generated_at && /^\d{4}/.test(d.generated_at)) THIS_YEAR = d.generated_at.slice(0, 4);
+    MAP = res[1];
+    showUpdated(d.generated_at);
+    init();
+  }).catch(function () {
+    $("ctList").innerHTML = '<p class="ct-empty">Trial data is unavailable right now.</p>';
+  });
+
+  // generated_at moves only when the list itself changes, so this reads as "the
+  // list last changed on". A date that stops moving is how a broken daily run shows.
+  function showUpdated(stamp) {
+    var when = stamp ? new Date(stamp) : null;
+    if (!when || isNaN(when)) return;
+    $("ctUpdated").textContent = "List last changed " + when.toLocaleDateString("en-GB",
+      { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }) + ".";
+  }
+
+  function init() {
+    $("ctTotal").textContent = data.length;
+    $("ctSponsors").textContent = new Set(data.map(function (r) { return r.sp; })).size;
+    $("ctActive").textContent = data.filter(function (r) { return LIVE.indexOf(r.s) > -1; }).length;
+    // the axis is fixed from the whole set, so it does not shift as filters change
+    var started = data.map(function (r) { return (r.d || "").slice(0, 4); })
+                      .filter(function (y) { return y && y <= THIS_YEAR; }).sort();
+    WINDOW = [];
+    for (var y = +(started[0] || THIS_YEAR); y <= +THIS_YEAR; y++) WINDOW.push(String(y));
+    WINDOW_START = WINDOW[0];
+
+    Array.from(new Set(data.map(function (r) { return r.m; }))).sort()
+      .forEach(function (m) { $("ctModality").add(new Option(m, m)); });
+    $("ctModality").addEventListener("change", function () { shown = 25; render(); });
+    $("ctClear").addEventListener("click", function () {
+      phase = ""; status = ""; year = ""; country = "";
+      $("ctModality").value = ""; shown = 25; render();
+    });
+    render();
+  }
+
+  // each chart is drawn against the set filtered by the OTHER controls, so
+  // selecting a phase does not collapse the phase chart to a single bar
+  function subset(skip) {
+    var m = $("ctModality").value;
+    return data.filter(function (r) {
+      if (m && r.m !== m) return false;
+      if (skip !== "phase"  && phase  && r.p !== phase)  return false;
+      if (skip !== "status" && status && r.s !== status) return false;
+      if (skip !== "year" && year) {
+        var y = (r.d || "").slice(0, 4);
+        // selecting the current year takes the estimated starts with it, matching
+        // what its column now counts
+        if (year === THIS_YEAR) { if (!y || y < THIS_YEAR) return false; }
+        else if (y !== year)    { return false; }
+      }
+      if (skip !== "country" && country && (r.co || []).indexOf(country) < 0) return false;
+      return true;
+    });
+  }
+
+  function renderPhase(rows) {
+    var counts = PHASES.map(function (p) {
+      return rows.filter(function (r) { return r.p === p; }).length; });
+    var max = Math.max.apply(null, counts.concat([1]));
+    var tot = counts.reduce(function (a, b) { return a + b; }, 0) || 1;
+    $("ctPhase").innerHTML = PHASES.map(function (p, i) {
+      var n = counts[i];
+      return '<button type="button" class="ct-phase-row" data-k="' + esc(p) + '" aria-pressed="' +
+        (phase === p) + '"><span class="lbl">' + esc(p) + '</span>' +
+        '<span class="bar"><span class="fill" style="width:' + (n / max * 100).toFixed(1) +
+        '%;background:' + SHADE[i] + '"></span></span><span class="val">' + n +
+        '<span class="pct">' + (n ? (n / tot * 100).toFixed(0) + '%' : '') +
+        '</span></span></button>';
+    }).join("");
+    Array.prototype.forEach.call($("ctPhase").querySelectorAll(".ct-phase-row"), function (el) {
+      el.addEventListener("click", function () {
+        var k = el.getAttribute("data-k");
+        phase = (phase === k) ? "" : k; shown = 25; render();
+      });
+    });
+  }
+
+  function renderStatus(rows) {
+    var seen = STATUS.map(function (s) {
+      return { k: s[0], l: s[1], c: s[2],
+               n: rows.filter(function (r) { return r.s === s[0]; }).length };
+    }).filter(function (s) { return s.n || status === s.k; });
+    var tot = seen.reduce(function (a, s) { return a + s.n; }, 0) || 1;
+    $("ctBand").className = "ct-band" + (status ? " picked" : "");
+    $("ctBand").innerHTML = seen.map(function (s) {
+      return '<button type="button" class="ct-seg" data-k="' + esc(s.k) + '" aria-pressed="' +
+        (status === s.k) + '" title="' + esc(s.l) + ': ' + s.n + '" aria-label="' + esc(s.l) +
+        ': ' + s.n + ' trials" style="flex:' + s.n + ' 0 0;background:' + s.c + '"></button>';
+    }).join("");
+    $("ctLegend").innerHTML = seen.map(function (s) {
+      return '<button type="button" class="ct-leg" data-k="' + esc(s.k) + '" aria-pressed="' +
+        (status === s.k) + '" title="' + esc(s.l) + '"><span class="dot" style="background:' +
+        s.c + '"></span><span class="nm">' + esc(s.l) + '</span><span class="qt">' + s.n +
+        '</span></button>';
+    }).join("");
+    function wire(el) {
+      el.addEventListener("click", function () {
+        var k = el.getAttribute("data-k");
+        status = (status === k) ? "" : k; shown = 25; render();
+      });
+    }
+    Array.prototype.forEach.call($("ctBand").querySelectorAll(".ct-seg"), wire);
+    Array.prototype.forEach.call($("ctLegend").querySelectorAll(".ct-leg"), wire);
+  }
+
+  function renderYears(rows) {
+    var yrs = {}, planned = 0;
+    rows.forEach(function (r) {
+      var y = (r.d || "").slice(0, 4);
+      if (!y) return;
+      // A trial whose start is still an estimate gets its own bucket at the end:
+      // it is not a year on this axis, because it has not happened.
+      if (y > THIS_YEAR) planned++;
+      else               yrs[y] = (yrs[y] || 0) + 1;
+    });
+
+    var cells = [];
+    // a label under every column would be unreadable at this width, so only the
+    // five-year marks and the current year are written out; hover names the rest
+    WINDOW.forEach(function (k) {
+      var here = k === THIS_YEAR;
+      // The current column is already hatched to say "provisional". Trials whose
+      // start is only an estimate belong to that same idea, so they are counted
+      // here rather than in a column of their own sitting past the axis.
+      var n = (yrs[k] || 0) + (here ? planned : 0);
+      // The current year always gets a label; a five-year mark gives way when it
+      // would collide, since two four-digit labels do not fit on adjacent columns.
+      var tick = (k % 5 === 0) && Math.abs(k - THIS_YEAR) >= 3;
+      cells.push({ k: k, lbl: (tick || here) ? k : "", n: n,
+                   cls: (here ? " part" : ""),
+                   note: here ? (planned
+                     ? "part year so far, including " + planned +
+                       (planned === 1 ? " trial with a later estimated start"
+                                      : " trials with later estimated starts")
+                     : "part year so far") : "" });
+    });
+
+    var mx = cells.reduce(function (n, c) { return Math.max(n, c.n); }, 0) || 1;
+    $("ctYears").innerHTML = cells.length ? cells.map(function (c) {
+      var t = c.k + ": " + c.n + (c.n === 1 ? " trial" : " trials") +
+              (c.note ? ", " + c.note : "");
+      return '<button type="button" class="ct-year' + c.cls + '" data-y="' + c.k +
+        '" aria-pressed="' + (year === c.k) + '" title="' + t + '" aria-label="' + t + '">' +
+        '<span class="qty">' + c.n + '</span><span class="col" style="height:' +
+        (c.n / mx * 88 + 3).toFixed(1) + 'px"></span>' +
+        '<span class="yl">' + c.lbl + '</span></button>';
+    }).join("") : '<p class="hint">No dated trials in this selection.</p>';
+    Array.prototype.forEach.call($("ctYears").querySelectorAll(".ct-year"), function (el) {
+      el.addEventListener("click", function () {
+        var y = el.getAttribute("data-y");
+        year = (year === y) ? "" : y; shown = 25; render();
+      });
+    });
+  }
+
+  function buildMap() {
+    if (MAP_BUILT || !MAP) return;
+    MAP_BUILT = true;
+    // ClinicalTrials.gov and Natural Earth disagree on a handful of names
+    Object.keys(MAP.alias || {}).forEach(function (k) {
+      TO_MAP[k] = MAP.alias[k]; FROM_MAP[MAP.alias[k]] = k;
+    });
+    var svg = ['<svg viewBox="' + MAP.viewBox + '" role="img" aria-label="World map of trial locations">'];
+    Object.keys(MAP.paths).forEach(function (name) {
+      svg.push('<path data-m="' + esc(name) + '" d="' + MAP.paths[name] + '"></path>');
+    });
+    // markers last so they sit above the polygons they overlap
+    Object.keys(MAP.points || {}).forEach(function (name) {
+      var pt = MAP.points[name];
+      svg.push('<circle data-m="' + esc(name) + '" cx="' + pt[0] + '" cy="' + pt[1] +
+               '" r="3.4" style="display:none"></circle>');
+    });
+    svg.push("</svg>");
+    $("ctMap").innerHTML = svg.join("");
+    $("ctMap").addEventListener("click", function (e) {
+      var el = e.target.closest ? e.target.closest("path.has, circle") : null;
+      if (!el) return;
+      var c = FROM_MAP[el.getAttribute("data-m")] || el.getAttribute("data-m");
+      country = (country === c) ? "" : c; shown = 25; render();
+    });
+    $("ctRamp").innerHTML = RAMP.map(function (c) {
+      return '<i style="background:' + c + '"></i>'; }).join("");
+  }
+
+  function renderCountries(rows) {
+    if (!MAP) { $("ctCountryHint").textContent = "Country data is unavailable."; return; }
+    buildMap();
+
+    var tally = {};
+    // a trial running in several countries is counted in each of them, so these
+    // add up to more than the number of trials — the hint below says so
+    rows.forEach(function (r) {
+      (r.co || []).forEach(function (c) { tally[c] = (tally[c] || 0) + 1; });
+    });
+    var counts = Object.keys(tally).map(function (c) { return tally[c]; });
+    var max = counts.length ? Math.max.apply(null, counts) : 1;
+
+    var mapped = {};
+    Object.keys(tally).forEach(function (c) { mapped[TO_MAP[c] || c] = tally[c]; });
+
+    $("ctMap").className = "ct-map" + (country ? " picked" : "");
+    Array.prototype.forEach.call($("ctMap").querySelectorAll("path"), function (el) {
+      var m = el.getAttribute("data-m"), n = mapped[m] || 0;
+      var ctg = FROM_MAP[m] || m;
+      el.setAttribute("class", (n ? "has" : "") + (ctg === country ? " sel" : ""));
+      // a square-root scale, so one very large country does not flatten the rest
+      el.style.fill = n ? RAMP[Math.min(RAMP.length - 1,
+        Math.floor(Math.sqrt(n / max) * RAMP.length))] : "";
+      var t = el.querySelector("title");
+      if (n || ctg === country) {
+        if (!t) { t = document.createElementNS("http://www.w3.org/2000/svg", "title"); el.appendChild(t); }
+        t.textContent = ctg + ": " + n + (n === 1 ? " trial" : " trials");
+      } else if (t) { el.removeChild(t); }
+    });
+
+    // markers for the places with no polygon; shown only when they have trials
+    Array.prototype.forEach.call($("ctMap").querySelectorAll("circle"), function (el) {
+      var m = el.getAttribute("data-m"), n = mapped[m] || 0;
+      el.style.display = (n || m === country) ? "" : "none";
+      el.setAttribute("class", m === country ? "sel" : "");
+      el.style.fill = n ? RAMP[Math.min(RAMP.length - 1,
+        Math.floor(Math.sqrt(n / max) * RAMP.length))] : "";
+      var t = el.querySelector("title");
+      if (!t) { t = document.createElementNS("http://www.w3.org/2000/svg", "title"); el.appendChild(t); }
+      t.textContent = m + ": " + n + (n === 1 ? " trial" : " trials");
+    });
+
+    // the full list: every country in the current selection, most trials first.
+    // Small countries are hard to hit on a world map and a few have no polygon,
+    // so this is the reliable way to pick one.
+    var ordered = Object.keys(tally).sort(function (a, b) {
+      return tally[b] - tally[a] || a.localeCompare(b); });
+    if (country && ordered.indexOf(country) < 0) ordered.push(country);
+    $("ctCoList").innerHTML = ordered.length ? ordered.map(function (c) {
+      var noShape = !MAP.paths[TO_MAP[c] || c];
+      return '<button type="button" class="ct-co" data-c="' + esc(c) + '" aria-pressed="' +
+        (country === c) + '"><span class="nm">' + (noShape ? '<span class="dot"></span>' : '') +
+        esc(c) + '</span><span class="qt">' + (tally[c] || 0) + '</span></button>';
+    }).join("") : '<p class="hint" style="margin:0.5rem">No locations listed.</p>';
+    Array.prototype.forEach.call($("ctCoList").querySelectorAll(".ct-co"), function (el) {
+      el.addEventListener("click", function () {
+        var c = el.getAttribute("data-c");
+        country = (country === c) ? "" : c; shown = 25; render();
+      });
+    });
+
+    var missing = rows.filter(function (r) { return !(r.co || []).length; }).length;
+    var bits = ["trials often run in several countries, so these add up to more than the total"];
+    if (missing) bits.push(missing + (missing === 1 ? " trial lists" : " trials list") + " no location");
+    $("ctCountryHint").textContent = "Select a country to filter. " +
+      bits.join("; ").replace(/^./, function (m) { return m.toUpperCase(); }) + ".";
+  }
+
+  function render() {
+    renderPhase(subset("phase"));
+    renderStatus(subset("status"));
+    renderYears(subset("year"));
+    renderCountries(subset("country"));
+    var rows = subset(null);
+
+    // the header count is the live answer to "how many trials am I looking at"
+    var picked = [];
+    if ($("ctModality").value) picked.push($("ctModality").value);
+    if (phase)  picked.push(phase);
+    if (status) picked.push(status.toLowerCase());
+    if (year)   picked.push(year);
+    if (country) picked.push(country);
+    $("ctShown").textContent = rows.length;
+    $("ctShownLab").textContent = picked.length
+      ? (rows.length === 1 ? "trial \u00b7 " : "trials \u00b7 ") + picked.join(" \u00b7 ")
+      : (rows.length === 1 ? "trial" : "trials");
+    $("ctClear").hidden = !picked.length;
+
+    $("ctListTitle").textContent = picked.length ? picked.join(" \u00b7 ") : "All trials";
+    $("ctCount").textContent = rows.length
+      ? "Showing " + Math.min(shown, rows.length) + " of " + rows.length : "";
+    if (!rows.length) {
+      $("ctList").innerHTML = '<p class="ct-empty">No trials match these filters.</p>';
+      return;
+    }
+    $("ctList").innerHTML = rows.slice(0, shown).map(function (r) {
+      var cls = LIVE.indexOf(r.s) > -1 ? "live"
+              : STOP.indexOf(r.s) > -1 ? "stop"
+              : r.s === "Unknown" ? "quiet" : "done";
+      return '<div class="ct-item"><h3><a href="https://clinicaltrials.gov/study/' + esc(r.n) +
+        '" target="_blank" rel="noopener">' + esc(r.t) + '</a></h3><div class="ct-meta">' +
+        (r.iv && r.iv.length ? '<span class="ct-drug">' + r.iv.map(esc).join(", ") + '</span>' : '') +
+        '<span class="ct-tag">' + esc(r.m) + '</span><span>' + esc(r.p) + '</span>' +
+        '<span class="ct-status ' + cls + '">' + esc(r.s) + '</span>' +
+        '<span>' + esc(r.sp) + '</span>' +
+        (r.d ? '<span>Started ' + esc(r.d) + '</span>' : '') +
+        (r.c && r.c.length ? '<span class="ct-cond">' + r.c.map(esc).join(" \u00b7 ") + '</span>' : '') +
+        '</div></div>';
+    }).join("") + (rows.length > shown
+      ? '<button type="button" class="ct-more" id="ctMore">Show more trials</button>' : "");
+    if ($("ctMore")) $("ctMore").addEventListener("click", function () { shown += 50; render(); });
+  }
+})();
+</script>
+</body>
+</html>

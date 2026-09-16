@@ -1,0 +1,357 @@
+# Copied unmodified (apart from this header) from the RNA Therapeutics Monitor,
+# https://github.com/McRae-Lab/rna-therapeutics-monitor, config/categories.yml at
+# commit 1d317c2. MIT licence, Copyright (c) 2026 RNA Therapeutics Monitor
+# contributors: see LICENSE-rna-monitor in this folder.
+
+schema_version: 1
+
+field_weights:
+  title: 3.0
+  interventions: 3.0
+  keywords: 2.0
+  mesh_terms: 1.5
+  abstract: 1.0
+  description: 0.75
+  organizations: 1.5
+
+global_negative_patterns:
+  - '\bRNA[- ]?seq(?:uencing)?\b(?!.*\btherap)'
+  - '\btranscriptom(?:e|ic|ics)\b(?!.*\btherap)'
+  - '\bviral RNA (?:load|surveillance|epidemiology)\b'
+
+categories:
+  modalities:
+    - label: mRNA
+      patterns:
+        - '\bmRNA (?:therap|vaccin|medicine|drug)'
+        - '\bmessenger RNA (?:therap|vaccin|medicine|drug)'
+        - '\bmodRNA (?:therap|vaccin|medicine|drug|deliver)'
+      negative_patterns:
+        - '\bmRNA expression\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: saRNA
+      patterns:
+        - '\bself[- ]amplifying RNA\b'
+        - '\bsaRNA (?:therap|vaccin|platform)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: circRNA
+      patterns:
+        - '\bcircular RNA (?:therap|vaccin|platform)'
+        - '\bcircRNA (?:therap|vaccin|delivery)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: siRNA
+      patterns:
+        - '\bsmall interfering RNA\b'
+        - '\bsiRNA (?:therap|drug|delivery|treatment)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: ASO
+      patterns:
+        - '\bantisense oligonucleotide'
+        - '\bASO (?:therap|drug|treatment)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: aptamer
+      patterns:
+        - '\bRNA aptamer'
+        - '\btherapeutic aptamer'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: miRNA
+      patterns:
+        - '\bmicroRNA (?:therap|mimic|inhibitor|replacement)'
+        - '\bmiRNA (?:therap|mimic|drug)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: RNA editing
+      patterns:
+        - '\bRNA editing\b'
+        - '\bADAR[- ]mediated edit'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: CRISPR RNA
+      patterns:
+        - '\bguide RNA therapeut'
+        - '\bguide RNA\b'
+        - '\bCRISPR RNA delivery\b'
+        - '\bCRISPR(?:[-/ ]Cas(?:9|12|13))?\b.{0,80}\b(?:therap|treat|deliver|edit)'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: RNA nanostructure
+      patterns:
+        - '\bRNA nanotechnolog'
+        - '\bRNA origami\b'
+        - '\bRNA nanostructure'
+      weight: 1.0
+      minimum_score: 1.0
+
+  delivery_systems:
+    - label: lipid nanoparticle
+      patterns:
+        - '\blipid nanoparticle'
+        - '\bLNP(?:s)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: GalNAc
+      patterns:
+        - '\bGalNAc\b'
+        - '\bN-acetylgalactosamine\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: extracellular vesicle
+      patterns:
+        - '\bextracellular vesicle'
+        - '\bexosome'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: virus-like particle
+      patterns:
+        - '\bvirus-like particle'
+        - '\bVLP(?:s)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: polymeric nanoparticle
+      patterns:
+        - '\bpolymeric nanoparticle'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: endosomal escape
+      patterns:
+        - '\bendosomal escape\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: extrahepatic delivery
+      patterns:
+        - '\bextrahepatic delivery\b'
+        - '\borgan-selective delivery\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  development_stages:
+    - label: preclinical in vitro
+      patterns:
+        - '\bin vitro\b'
+        - '\bcell(?:ular)? model\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: preclinical animal
+      patterns:
+        - '\bin vivo\b'
+        - '\bmouse model\b'
+        - '\bnonhuman primate'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Phase 1
+      patterns:
+        - '\bphase (?:1|I)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Phase 2
+      patterns:
+        - '\bphase (?:2|II)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Phase 3
+      patterns:
+        - '\bphase (?:3|III)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: approved
+      patterns:
+        - '\b(?:FDA|EMA) approv'
+        - '\bmarketing authori[sz]ation\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  disease_areas:
+    - label: oncology
+      patterns:
+        - '\bcancer\b'
+        - '\btumou?rs?\b'
+        - '\boncolog'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: infectious disease
+      patterns:
+        - '\binfectious disease'
+        - '\bviral infection'
+        - '\bvaccine against\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: rare disease
+      patterns:
+        - '\brare disease'
+        - '\borphan disease'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: neurological
+      patterns:
+        - '\bneuro(?:logical|degenerative)'
+        - '\bcentral nervous system\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  methods:
+    - label: in vitro transcription
+      patterns:
+        - '\bin vitro transcription\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+    - label: RNA capping
+      patterns:
+        - '\bRNA capp(?:ing|ed)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: RNA purification
+      patterns:
+        - '\bRNA purification\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  therapeutic_targets:
+    - label: PCSK9
+      patterns:
+        - '\bPCSK9\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: transthyretin
+      patterns:
+        - '\btransthyretin\b'
+        - '\bTTR\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: KRAS
+      patterns:
+        - '\bKRAS\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  species:
+    - label: human
+      patterns:
+        - '\bpatients?\b'
+        - '\bparticipants?\b'
+        - '\bhuman(?:s)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: mouse
+      patterns:
+        - '\bmice\b'
+        - '\bmouse model'
+        - '\bmurine\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: nonhuman primate
+      patterns:
+        - '\bnon[- ]human primate'
+        - '\bmacaque'
+      weight: 1.0
+      minimum_score: 1.0
+
+  companies:
+    - label: Alnylam Pharmaceuticals
+      patterns:
+        - '\bAlnylam(?: Pharmaceuticals)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Moderna
+      patterns:
+        - '\bModerna\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Ionis Pharmaceuticals
+      patterns:
+        - '\bIonis(?: Pharmaceuticals)?\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: BioNTech
+      patterns:
+        - '\bBioNTech\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  institutions:
+    - label: University of British Columbia
+      patterns:
+        - '\bUniversity of British Columbia\b'
+        - '\bUBC\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: Example University
+      patterns:
+        - '\bExample University\b'
+      weight: 1.0
+      minimum_score: 1.0
+
+  topics:
+    - label: CRISPR
+      patterns:
+        - '\bCRISPR(?:[-/ ]Cas(?:9|12|13))?\b'
+        - '\bguide RNA\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: gene editing
+      patterns:
+        - '\bgene edit(?:ing|or|ors|ed)\b'
+        - '\bgenome edit(?:ing|or|ors|ed)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: base editing
+      patterns:
+        - '\bbase edit(?:ing|or|ors|ed)\b'
+        - '\b(?:adenine|cytosine) base editor\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: delivery
+      patterns:
+        - '\bdelivery\b'
+        - '\bformulation\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: manufacturing
+      patterns:
+        - '\bmanufactur'
+        - '\bquality control\b'
+        - '\bpurification\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: clinical development
+      patterns:
+        - '\bclinical trial\b'
+        - '\bphase (?:1|2|3|I|II|III)\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: regulation
+      patterns:
+        - '\bregulatory (?:approval|decision|review|submission|pathway|guidance|requirement|policy|agency|agencies|affairs)\b'
+        - '\bmarketing authori[sz]ation\b'
+        - '\b(?:accelerated|full|conditional) approval\b'
+        - '\b(?:IND|NDA|BLA) (?:clearance|submission|approval)\b'
+        - '\bcomplete response letter\b'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: regulation
+      patterns:
+        - '\b(?:FDA|EMA)\b'
+      weight: 1.0
+      # Title matches receive weight 3. A passing FDA or EMA mention in an
+      # abstract is not enough to make a record regulatory.
+      minimum_score: 3.0
+    - label: safety
+      patterns:
+        - '\bsafety\b'
+        - '\btoxicit'
+        - '\badverse event'
+      weight: 1.0
+      minimum_score: 1.0
+    - label: efficacy
+      patterns:
+        - '\befficacy\b'
+        - '\bresponse rate\b'
+        - '\btherapeutic effect'
+      weight: 1.0
+      minimum_score: 1.0
