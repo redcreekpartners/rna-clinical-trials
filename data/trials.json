@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-17T16:04:25+00:00",
+ "generated_at": "2026-09-18T15:40:04+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -46,7 +46,7 @@
    "p": "Phase 2",
    "s": "Not Yet Recruiting",
    "d": "2026-10-30",
-   "sp": "Sanofi Pasteur, a Sanofi Company",
+   "sp": "Sanofi",
    "c": [
     "Acne"
    ],
@@ -91,23 +91,6 @@
    ]
   },
   {
-   "n": "NCT07738107",
-   "t": "ATR 1072 in Participants With PRKAG2 Syndrome",
-   "m": "siRNA",
-   "p": "Phase 1/Phase 2",
-   "s": "Not Yet Recruiting",
-   "d": "2026-10",
-   "sp": "Atrium Therapeutics",
-   "c": [
-    "Cardiac Glycogenosis",
-    "Cardiomyopathy"
-   ],
-   "iv": [
-    "ATR 1072"
-   ],
-   "co": []
-  },
-  {
    "n": "NCT07804004",
    "t": "A Safety and Efficacy Study Evaluating CTX112 in Subjects With Refractory Neurologic Autoimmune Disease",
    "m": "CRISPR RNA",
@@ -123,6 +106,25 @@
     "CTX112"
    ],
    "co": []
+  },
+  {
+   "n": "NCT07738107",
+   "t": "ATR 1072 in Participants With PRKAG2 Syndrome",
+   "m": "siRNA",
+   "p": "Phase 1/Phase 2",
+   "s": "Recruiting",
+   "d": "2026-09-14",
+   "sp": "Atrium Therapeutics",
+   "c": [
+    "Cardiac Glycogenosis",
+    "Cardiomyopathy"
+   ],
+   "iv": [
+    "ATR 1072"
+   ],
+   "co": [
+    "United States"
+   ]
   },
   {
    "n": "NCT07757802",
@@ -149,7 +151,7 @@
    "t": "A Study on the Efficacy of a Vaccine Against Influenza in Adults ≥65 Years of Age",
    "m": "mRNA",
    "p": "Phase 3",
-   "s": "Not Yet Recruiting",
+   "s": "Recruiting",
    "d": "2026-09-02",
    "sp": "GlaxoSmithKline",
    "c": [
@@ -159,7 +161,9 @@
     "mRNA Seasonal Flu vaccine",
     "Licensed Influenza Vaccine"
    ],
-   "co": []
+   "co": [
+    "United States"
+   ]
   },
   {
    "n": "NCT07587242",
@@ -294,6 +298,9 @@
     "ALN-6400"
    ],
    "co": [
+    "Netherlands",
+    "Sweden",
+    "United Kingdom",
     "United States"
    ]
   },
@@ -1256,7 +1263,7 @@
    "t": "A Study to Evaluate the Immune Response and Safety of an Influenza Vaccine in Adults 18 Years of Age and Above",
    "m": "mRNA",
    "p": "Phase 2",
-   "s": "Active Not Recruiting",
+   "s": "Completed",
    "d": "2025-10-07",
    "sp": "GlaxoSmithKline",
    "c": [
@@ -1307,6 +1314,7 @@
     "India",
     "Italy",
     "Japan",
+    "Mexico",
     "Netherlands",
     "New Zealand",
     "Poland",
