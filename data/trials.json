@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-21T17:42:02+00:00",
+ "generated_at": "2026-09-22T16:07:54+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -323,6 +323,27 @@
    ]
   },
   {
+   "n": "NCT07549698",
+   "t": "Safety and Preliminary Efficacy of CTX112 in Adult Participants With Relapsed/Refractory Hematologic Autoimmune Disease",
+   "m": "CRISPR RNA",
+   "p": "Phase 1/Phase 2",
+   "s": "Recruiting",
+   "d": "2026-07-17",
+   "sp": "CRISPR Therapeutics AG",
+   "c": [
+    "Warm Autoimmune Hemolytic Anemia (WAIHA)",
+    "ITP - Immune Thrombocytopenia"
+   ],
+   "iv": [
+    "CTX112"
+   ],
+   "co": [
+    "Germany",
+    "Spain",
+    "United States"
+   ]
+  },
+  {
    "n": "NCT07652242",
    "t": "Phase 1 Study of a Self-amplifying RNA Vaccine (ITI-5000) in Stage 2-3 Triple Negative Breast Cancer",
    "m": "mRNA",
@@ -476,27 +497,6 @@
     "Japan",
     "Netherlands",
     "South Korea",
-    "Spain",
-    "United States"
-   ]
-  },
-  {
-   "n": "NCT07549698",
-   "t": "Safety and Preliminary Efficacy of CTX112 in Adult Participants With Relapsed/Refractory Hematologic Autoimmune Disease",
-   "m": "CRISPR RNA",
-   "p": "Phase 1/Phase 2",
-   "s": "Recruiting",
-   "d": "2026-06",
-   "sp": "CRISPR Therapeutics AG",
-   "c": [
-    "Warm Autoimmune Hemolytic Anemia (WAIHA)",
-    "ITP - Immune Thrombocytopenia"
-   ],
-   "iv": [
-    "CTX112"
-   ],
-   "co": [
-    "Germany",
     "Spain",
     "United States"
    ]
