@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-22T16:07:54+00:00",
+ "generated_at": "2026-09-24T16:20:41+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -85,6 +85,25 @@
    ],
    "iv": [
     "NWRD09"
+   ],
+   "co": [
+    "United States"
+   ]
+  },
+  {
+   "n": "NCT07839936",
+   "t": "A Study of VERVE-102 (LY4636581) in Adults With or at High Risk for Cardiovascular Disease",
+   "m": "CRISPR RNA",
+   "p": "Phase 2",
+   "s": "Not Yet Recruiting",
+   "d": "2026-10",
+   "sp": "Verve Therapeutics, Inc.",
+   "c": [
+    "Atherosclerosis",
+    "Cardiovascular Disease"
+   ],
+   "iv": [
+    "VERVE-102"
    ],
    "co": [
     "United States"
