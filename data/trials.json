@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-28T19:07:49+00:00",
+ "generated_at": "2026-09-29T17:30:05+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -204,6 +204,7 @@
     "France",
     "Germany",
     "Italy",
+    "Netherlands",
     "Spain",
     "United Kingdom"
    ]
