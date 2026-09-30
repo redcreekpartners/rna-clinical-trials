@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-29T17:30:05+00:00",
+ "generated_at": "2026-09-30T17:27:55+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -38,6 +38,22 @@
    "co": [
     "United States"
    ]
+  },
+  {
+   "n": "NCT07850076",
+   "t": "A Trial Evaluating the Safety, Tolerability, Pharmacokinetics, Pharmacodynamics, and Efficacy of CTX460 in Adults With Emphysema Associated With Severe Alpha-1 Antitrypsin Deficiency (AATD)",
+   "m": "CRISPR RNA",
+   "p": "Phase 1/Phase 2",
+   "s": "Not Yet Recruiting",
+   "d": "2026-10-31",
+   "sp": "CRISPR Therapeutics",
+   "c": [
+    "Alpha-1 Antitrypsin Deficiency (AATD)"
+   ],
+   "iv": [
+    "CTX460"
+   ],
+   "co": []
   },
   {
    "n": "NCT07756957",
@@ -2053,7 +2069,7 @@
    "t": "Phase 1 Safety and Tolerability Study of ALN-F1202 in Healthy Adults",
    "m": "siRNA",
    "p": "Phase 1",
-   "s": "Active Not Recruiting",
+   "s": "Completed",
    "d": "2025-03-06",
    "sp": "Regeneron Pharmaceuticals",
    "c": [
