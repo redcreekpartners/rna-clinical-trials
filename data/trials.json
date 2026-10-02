@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-01T17:53:44+00:00",
+ "generated_at": "2026-10-02T17:17:22+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -5072,7 +5072,7 @@
    "t": "ABOD2011 in Patients With Advanced Solid Tumors Progressed After Standard Systemic Therapy",
    "m": "mRNA",
    "p": "Phase 1",
-   "s": "Recruiting",
+   "s": "Completed",
    "d": "2022-05-25",
    "sp": "Cancer Institute and Hospital, Chinese Academy of Medical Sciences",
    "c": [
