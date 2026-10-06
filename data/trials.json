@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-02T17:17:22+00:00",
+ "generated_at": "2026-10-06T17:47:15+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -2485,7 +2485,7 @@
    "t": "RNA-Lipid Particle (RNA-LP) Vaccines for Recurrent Adult Glioblastoma (GBM)",
    "m": "mRNA",
    "p": "Phase 1",
-   "s": "Recruiting",
+   "s": "Active Not Recruiting",
    "d": "2024-12-02",
    "sp": "University of Florida",
    "c": [
