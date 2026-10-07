@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-06T17:47:15+00:00",
+ "generated_at": "2026-10-07T18:18:35+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -4955,7 +4955,7 @@
    "t": "Study to Evaluate Safety, Efficacy of Intralesional Injection of STP705 in Adults With Facial isSCC",
    "m": "siRNA",
    "p": "Phase 1/Phase 2",
-   "s": "Completed",
+   "s": "Terminated",
    "d": "2022-08-01",
    "sp": "Sirnaomics",
    "c": [
