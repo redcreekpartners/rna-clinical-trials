@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-09T17:52:32+00:00",
+ "generated_at": "2026-10-13T18:47:14+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -109,6 +109,25 @@
    ]
   },
   {
+   "n": "NCT07870330",
+   "t": "A Study to Evaluate the Safety, Reactogenicity, and Immunogenicity of mRNA-1010 in Healthy Children",
+   "m": "mRNA",
+   "p": "Phase 1",
+   "s": "Not Yet Recruiting",
+   "d": "2026-10-07",
+   "sp": "ModernaTX, Inc.",
+   "c": [
+    "Seasonal Influenza"
+   ],
+   "iv": [
+    "mRNA-1010",
+    "Fluarix Trivalent"
+   ],
+   "co": [
+    "United States"
+   ]
+  },
+  {
    "n": "NCT07796646",
    "t": "Study to Evaluate the Long-Term Safety of Ultevursen in Participants With Retinitis Pigmentosa (RP) Due to Mutations in Exon 13 of the USH2A Gene",
    "m": "ASO",
@@ -143,6 +162,29 @@
    ],
    "co": [
     "United States"
+   ]
+  },
+  {
+   "n": "NCT07870889",
+   "t": "Vortosiran in Atrial Fibrillation",
+   "m": "siRNA",
+   "p": "Phase 2",
+   "s": "Not Yet Recruiting",
+   "d": "2026-10-01",
+   "sp": "Ribocure Pharmaceuticals AB",
+   "c": [
+    "Non-valvular Atrial Fibrillation (AF)"
+   ],
+   "iv": [
+    "Vortosiran",
+    "Vortosiran",
+    "Apixaban"
+   ],
+   "co": [
+    "Denmark",
+    "Norway",
+    "Poland",
+    "Sweden"
    ]
   },
   {
@@ -253,6 +295,7 @@
     "AOC 1044"
    ],
    "co": [
+    "Australia",
     "Belgium",
     "France",
     "Germany",
