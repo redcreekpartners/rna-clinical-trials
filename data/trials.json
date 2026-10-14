@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-13T18:47:14+00:00",
+ "generated_at": "2026-10-14T16:21:29+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -358,6 +358,7 @@
     "BNT168"
    ],
    "co": [
+    "South Africa",
     "United States"
    ]
   },
