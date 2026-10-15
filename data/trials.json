@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-14T16:21:29+00:00",
+ "generated_at": "2026-10-15T16:09:32+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -607,6 +607,7 @@
    ],
    "co": [
     "Australia",
+    "Belgium",
     "China",
     "France",
     "Germany",
@@ -615,6 +616,7 @@
     "Netherlands",
     "South Korea",
     "Spain",
+    "United Kingdom",
     "United States"
    ]
   },
@@ -904,7 +906,7 @@
    "t": "A Study to Evaluate ALN-4915 in Adult Healthy Volunteers",
    "m": "siRNA",
    "p": "Phase 1",
-   "s": "Recruiting",
+   "s": "Active Not Recruiting",
    "d": "2026-03-02",
    "sp": "Alnylam Pharmaceuticals",
    "c": [
@@ -1397,59 +1399,6 @@
    ]
   },
   {
-   "n": "NCT07181109",
-   "t": "Zilebesiran in Patients With Hypertension Not Adequately Controlled and With Either Established Cardiovascular Disease or High Risk for Cardiovascular Disease",
-   "m": "siRNA",
-   "p": "Phase 3",
-   "s": "Recruiting",
-   "d": "2025-09-22",
-   "sp": "Alnylam Pharmaceuticals",
-   "c": [
-    "High Risk Cardiovascular Disease",
-    "Hypertension"
-   ],
-   "iv": [
-    "Zilebesiran"
-   ],
-   "co": [
-    "Argentina",
-    "Australia",
-    "Austria",
-    "Belgium",
-    "Brazil",
-    "Bulgaria",
-    "Canada",
-    "Chile",
-    "China",
-    "Colombia",
-    "Czechia",
-    "Denmark",
-    "France",
-    "Germany",
-    "Greece",
-    "Hungary",
-    "India",
-    "Italy",
-    "Japan",
-    "Mexico",
-    "Netherlands",
-    "New Zealand",
-    "Poland",
-    "Portugal",
-    "Romania",
-    "Serbia",
-    "Slovakia",
-    "South Africa",
-    "South Korea",
-    "Spain",
-    "Sweden",
-    "Taiwan",
-    "Turkey (Türkiye)",
-    "United Kingdom",
-    "United States"
-   ]
-  },
-  {
    "n": "NCT07222371",
    "t": "An Open-label, Single Center, Single Participant Study of an Experimental Antisense Oligonucleotide Treatment for TUBB4A-related Leukodystrophy",
    "m": "ASO",
@@ -1522,6 +1471,59 @@
    ],
    "co": [
     "China"
+   ]
+  },
+  {
+   "n": "NCT07181109",
+   "t": "Zilebesiran in Patients With Hypertension Not Adequately Controlled and With Either Established Cardiovascular Disease or High Risk for Cardiovascular Disease",
+   "m": "siRNA",
+   "p": "Phase 3",
+   "s": "Recruiting",
+   "d": "2025-09-06",
+   "sp": "Alnylam Pharmaceuticals",
+   "c": [
+    "High Risk Cardiovascular Disease",
+    "Hypertension"
+   ],
+   "iv": [
+    "Zilebesiran"
+   ],
+   "co": [
+    "Argentina",
+    "Australia",
+    "Austria",
+    "Belgium",
+    "Brazil",
+    "Bulgaria",
+    "Canada",
+    "Chile",
+    "China",
+    "Colombia",
+    "Czechia",
+    "Denmark",
+    "France",
+    "Germany",
+    "Greece",
+    "Hungary",
+    "India",
+    "Italy",
+    "Japan",
+    "Mexico",
+    "Netherlands",
+    "New Zealand",
+    "Poland",
+    "Portugal",
+    "Romania",
+    "Serbia",
+    "Slovakia",
+    "South Africa",
+    "South Korea",
+    "Spain",
+    "Sweden",
+    "Taiwan",
+    "Turkey (Türkiye)",
+    "United Kingdom",
+    "United States"
    ]
   },
   {
