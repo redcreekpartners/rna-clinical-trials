@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-15T16:09:32+00:00",
+ "generated_at": "2026-10-19T18:12:14+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -2882,7 +2882,7 @@
    "t": "A Phase 1b/2a, Open-label Single Ascending Doses and Multiple Ascending Doses Study in Participants With Pi*ZZ AATD",
    "m": "ASO",
    "p": "Phase 1/Phase 2",
-   "s": "Active Not Recruiting",
+   "s": "Recruiting",
    "d": "2024-07-19",
    "sp": "Wave Life Sciences USA, Inc.",
    "c": [
@@ -5736,7 +5736,7 @@
    "t": "Open-label Study of WVE-N531 in Patients With Duchenne Muscular Dystrophy (FORWARD-53)",
    "m": "ASO",
    "p": "Phase 1/Phase 2",
-   "s": "Recruiting",
+   "s": "Active Not Recruiting",
    "d": "2021-09-28",
    "sp": "Wave Life Sciences USA, Inc.",
    "c": [
