@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T18:12:14+00:00",
+ "generated_at": "2026-10-20T16:13:20+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -107,6 +107,42 @@
    "co": [
     "United States"
    ]
+  },
+  {
+   "n": "NCT07884136",
+   "t": "RBD1119 in Coronary Artery Disease (CAD)",
+   "m": "siRNA",
+   "p": "Phase 2",
+   "s": "Not Yet Recruiting",
+   "d": "2026-10-16",
+   "sp": "Ribocure Pharmaceuticals AB",
+   "c": [
+    "Stable Coronary Artery Disease"
+   ],
+   "iv": [
+    "RBD1119"
+   ],
+   "co": [
+    "Poland",
+    "Sweden"
+   ]
+  },
+  {
+   "n": "NCT07884175",
+   "t": "A Study of Updated mRNA Seasonal Influenza Vaccines",
+   "m": "mRNA",
+   "p": "Phase 4",
+   "s": "Not Yet Recruiting",
+   "d": "2026-10-15",
+   "sp": "ModernaTX, Inc.",
+   "c": [
+    "Seasonal Influenza"
+   ],
+   "iv": [
+    "mRNA-1010",
+    "Licensed High-Dose Seasonal Influenza Vaccine"
+   ],
+   "co": []
   },
   {
    "n": "NCT07870330",
@@ -6085,7 +6121,7 @@
    "t": "Study to Assess the Safety and Efficacy of Viltolarsen in Ambulant Boys With DMD (RACER53-X)",
    "m": "ASO",
    "p": "Phase 3",
-   "s": "Unknown",
+   "s": "Active Not Recruiting",
    "d": "2021-04-13",
    "sp": "NS Pharma, Inc.",
    "c": [
