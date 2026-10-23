@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-22T16:28:57+00:00",
+ "generated_at": "2026-10-23T16:18:11+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -19,6 +19,26 @@
    ],
    "co": [
     "Germany"
+   ]
+  },
+  {
+   "n": "NCT07757802",
+   "t": "Phase 1 Study of CH505 HIV Vaccine Nanoparticles and mRNA Boosters in Healthy Adults",
+   "m": "mRNA",
+   "p": "Phase 1",
+   "s": "Recruiting",
+   "d": "2026-12-01",
+   "sp": "National Institute of Allergy and Infectious Diseases (NIAID)",
+   "c": [
+    "HIV"
+   ],
+   "iv": [
+    "DV901-NP",
+    "DV902-NP",
+    "CH505 TF mRNA-gp160"
+   ],
+   "co": [
+    "United States"
    ]
   },
   {
@@ -104,26 +124,6 @@
     "NIO752"
    ],
    "co": []
-  },
-  {
-   "n": "NCT07757802",
-   "t": "Phase 1 Study of CH505 HIV Vaccine Nanoparticles and mRNA Boosters in Healthy Adults",
-   "m": "mRNA",
-   "p": "Phase 1",
-   "s": "Recruiting",
-   "d": "2026-10-19",
-   "sp": "National Institute of Allergy and Infectious Diseases (NIAID)",
-   "c": [
-    "HIV"
-   ],
-   "iv": [
-    "DV901-NP",
-    "DV902-NP",
-    "CH505 TF mRNA-gp160"
-   ],
-   "co": [
-    "United States"
-   ]
   },
   {
    "n": "NCT07884136",
