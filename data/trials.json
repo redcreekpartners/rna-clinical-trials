@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T16:18:11+00:00",
+ "generated_at": "2026-10-26T18:06:09+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -453,6 +453,7 @@
    "co": [
     "Netherlands",
     "Sweden",
+    "Turkey (Türkiye)",
     "United Kingdom",
     "United States"
    ]
@@ -1389,6 +1390,24 @@
    ]
   },
   {
+   "n": "NCT06932861",
+   "t": "Exploratory Study of Personalized mRNA Vaccine in Patients With Refractory Rhabdomyosarcoma",
+   "m": "mRNA",
+   "p": "Early Phase 1",
+   "s": "Recruiting",
+   "d": "2025-10-13",
+   "sp": "Xinxin Zhang",
+   "c": [
+    "Rhabdomyosarcoma"
+   ],
+   "iv": [
+    "personalized neoantigen mRNA vaccine"
+   ],
+   "co": [
+    "China"
+   ]
+  },
+  {
    "n": "NCT07157254",
    "t": "A Safety and Efficacy Study of GTX-102 in Subjects With Deletion- or Nondeletion-type Angelman Syndrome (AS)",
    "m": "ASO",
@@ -2030,22 +2049,6 @@
    ],
    "iv": [
     "A zoster mRNA vaccine SYS6017"
-   ],
-   "co": []
-  },
-  {
-   "n": "NCT06932861",
-   "t": "Exploratory Study of Personalized mRNA Vaccine in Patients With Refractory Rhabdomyosarcoma",
-   "m": "mRNA",
-   "p": "Early Phase 1",
-   "s": "Not Yet Recruiting",
-   "d": "2025-05-01",
-   "sp": "Xinxin Zhang",
-   "c": [
-    "Rhabdomyosarcoma"
-   ],
-   "iv": [
-    "mRNA Tumor Vaccine Therapy"
    ],
    "co": []
   },
