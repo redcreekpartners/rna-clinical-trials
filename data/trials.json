@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T18:06:09+00:00",
+ "generated_at": "2026-10-28T17:47:49+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -166,7 +166,7 @@
    "t": "A Study to Evaluate the Safety, Reactogenicity, and Immunogenicity of mRNA-1010 in Healthy Children",
    "m": "mRNA",
    "p": "Phase 1",
-   "s": "Not Yet Recruiting",
+   "s": "Recruiting",
    "d": "2026-10-07",
    "sp": "ModernaTX, Inc.",
    "c": [
