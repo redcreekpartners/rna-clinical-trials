@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-28T17:47:49+00:00",
+ "generated_at": "2026-11-02T21:17:37+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -2111,9 +2111,9 @@
   },
   {
    "n": "NCT06891417",
-   "t": "Phase 1/2 Study of Chlamydia Trachomatis mRNA Vaccine in Adults Aged 18 to 29 Years",
+   "t": "Phase 1 Study of Chlamydia Trachomatis mRNA Vaccine in Adults.",
    "m": "mRNA",
-   "p": "Phase 1/Phase 2",
+   "p": "Phase 1",
    "s": "Recruiting",
    "d": "2025-03-27",
    "sp": "Sanofi",
@@ -3870,7 +3870,7 @@
    "t": "Novel Antisense Oligonucleotide Eye Drops for Treating Antibiotic-Resistant Bacterial Keratitis",
    "m": "ASO",
    "p": "Early Phase 1",
-   "s": "Recruiting",
+   "s": "Unknown",
    "d": "2023-10-11",
    "sp": "Eye & ENT Hospital of Fudan University",
    "c": [
