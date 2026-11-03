@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-02T21:17:37+00:00",
+ "generated_at": "2026-11-03T18:57:09+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -1412,7 +1412,7 @@
    "t": "A Safety and Efficacy Study of GTX-102 in Subjects With Deletion- or Nondeletion-type Angelman Syndrome (AS)",
    "m": "ASO",
    "p": "Phase 2",
-   "s": "Active Not Recruiting",
+   "s": "Terminated",
    "d": "2025-10-13",
    "sp": "Ultragenyx Pharmaceutical Inc",
    "c": [
@@ -2567,7 +2567,7 @@
    "t": "Phase 3 Efficacy and Safety Study of GTX-102 in Pediatric Subjects With Angelman Syndrome (AS)",
    "m": "ASO",
    "p": "Phase 3",
-   "s": "Active Not Recruiting",
+   "s": "Terminated",
    "d": "2024-12-03",
    "sp": "Ultragenyx Pharmaceutical Inc",
    "c": [
@@ -2861,7 +2861,7 @@
    "t": "Long-term Extension of GTX-102 in Angelman Syndrome",
    "m": "ASO",
    "p": "Phase 3",
-   "s": "Active Not Recruiting",
+   "s": "Terminated",
    "d": "2024-07-31",
    "sp": "Ultragenyx Pharmaceutical Inc",
    "c": [
