@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-03T18:57:09+00:00",
+ "generated_at": "2026-11-05T19:23:44+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -2840,7 +2840,7 @@
    "n": "NCT06492304",
    "t": "A Safety and Efficacy Study Evaluating CTX131 in Adult Subjects With Relapsed/Refractory Hematologic Malignancies",
    "m": "CRISPR RNA",
-   "p": "Phase 1/Phase 2",
+   "p": "Phase 1",
    "s": "Completed",
    "d": "2024-08-13",
    "sp": "CRISPR Therapeutics",
@@ -4287,7 +4287,7 @@
    "n": "NCT05795595",
    "t": "A Safety and Efficacy Study Evaluating CTX131 in Adult Subjects With Relapsed or Refractory Solid Tumors",
    "m": "CRISPR RNA",
-   "p": "Phase 1/Phase 2",
+   "p": "Phase 1",
    "s": "Completed",
    "d": "2023-03-13",
    "sp": "CRISPR Therapeutics AG",
