@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T19:26:43+00:00",
+ "generated_at": "2026-11-13T19:05:20+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -77,6 +77,24 @@
    ]
   },
   {
+   "n": "NCT07850076",
+   "t": "A Trial Evaluating the Safety, Tolerability, Pharmacokinetics, Pharmacodynamics, and Efficacy of CTX460 in Adults With Emphysema Associated With Severe Alpha-1 Antitrypsin Deficiency (AATD)",
+   "m": "CRISPR RNA",
+   "p": "Phase 1/Phase 2",
+   "s": "Recruiting",
+   "d": "2026-12",
+   "sp": "CRISPR Therapeutics",
+   "c": [
+    "Alpha-1 Antitrypsin Deficiency (AATD)"
+   ],
+   "iv": [
+    "CTX460"
+   ],
+   "co": [
+    "Australia"
+   ]
+  },
+  {
    "n": "NCT07804004",
    "t": "A Safety and Efficacy Study Evaluating CTX112 in Subjects With Refractory Neurologic Autoimmune Disease",
    "m": "CRISPR RNA",
@@ -90,22 +108,6 @@
    ],
    "iv": [
     "CTX112"
-   ],
-   "co": []
-  },
-  {
-   "n": "NCT07850076",
-   "t": "A Trial Evaluating the Safety, Tolerability, Pharmacokinetics, Pharmacodynamics, and Efficacy of CTX460 in Adults With Emphysema Associated With Severe Alpha-1 Antitrypsin Deficiency (AATD)",
-   "m": "CRISPR RNA",
-   "p": "Phase 1/Phase 2",
-   "s": "Not Yet Recruiting",
-   "d": "2026-10-31",
-   "sp": "CRISPR Therapeutics",
-   "c": [
-    "Alpha-1 Antitrypsin Deficiency (AATD)"
-   ],
-   "iv": [
-    "CTX460"
    ],
    "co": []
   },
@@ -166,7 +168,7 @@
    "t": "A Study of Updated mRNA Seasonal Influenza Vaccines",
    "m": "mRNA",
    "p": "Phase 4",
-   "s": "Not Yet Recruiting",
+   "s": "Recruiting",
    "d": "2026-10-15",
    "sp": "ModernaTX, Inc.",
    "c": [
@@ -176,7 +178,9 @@
     "mRNA-1010",
     "Licensed High-Dose Seasonal Influenza Vaccine"
    ],
-   "co": []
+   "co": [
+    "United States"
+   ]
   },
   {
    "n": "NCT07870330",
@@ -471,6 +475,7 @@
     "ALN-6400"
    ],
    "co": [
+    "Germany",
     "Netherlands",
     "Sweden",
     "Turkey (Türkiye)",
@@ -1167,7 +1172,7 @@
    "t": "A Study to Evaluate ALN-4324 on Insulin Sensitivity in Adults With Type 2 Diabetes Mellitus",
    "m": "siRNA",
    "p": "Phase 2",
-   "s": "Recruiting",
+   "s": "Active Not Recruiting",
    "d": "2026-01-15",
    "sp": "Alnylam Pharmaceuticals",
    "c": [
