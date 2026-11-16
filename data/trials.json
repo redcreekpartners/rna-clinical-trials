@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-13T19:05:20+00:00",
+ "generated_at": "2026-11-16T21:32:21+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -296,6 +296,24 @@
    "co": [
     "Australia",
     "United Kingdom",
+    "United States"
+   ]
+  },
+  {
+   "n": "NCT07939555",
+   "t": "Personalized Antisense Oligonucleotide Therapy for Participants With Progressive Axonal Neuropathy Due to SLC12A6 Mutation",
+   "m": "ASO",
+   "p": "Phase 1/Phase 2",
+   "s": "Active Not Recruiting",
+   "d": "2026-09-25",
+   "sp": "n-Lorem Foundation",
+   "c": [
+    "Progressive Axonal Neuropathy"
+   ],
+   "iv": [
+    "nL-SLC12-001"
+   ],
+   "co": [
     "United States"
    ]
   },
