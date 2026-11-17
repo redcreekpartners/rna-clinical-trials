@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-16T21:32:21+00:00",
+ "generated_at": "2026-11-17T20:22:25+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -19,6 +19,31 @@
    ],
    "co": [
     "Germany"
+   ]
+  },
+  {
+   "n": "NCT07943598",
+   "t": "A Global Phase 2 Extension Study of Brogidirsen in Boys With Duchenne Muscular Dystrophy",
+   "m": "ASO",
+   "p": "Phase 2",
+   "s": "Enrolling By Invitation",
+   "d": "2026-12-16",
+   "sp": "NS Pharma, Inc.",
+   "c": [
+    "Duchenne Muscular Dystrophy",
+    "Exon 44"
+   ],
+   "iv": [
+    "Brogidirsen"
+   ],
+   "co": [
+    "Australia",
+    "Canada",
+    "Japan",
+    "New Zealand",
+    "South Korea",
+    "Turkey (Türkiye)",
+    "United States"
    ]
   },
   {
