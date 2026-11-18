@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-17T20:22:25+00:00",
+ "generated_at": "2026-11-18T19:52:23+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -137,22 +137,6 @@
    "co": []
   },
   {
-   "n": "NCT07756957",
-   "t": "Safety of the Acne mRNA Vaccine in Adolescents 12 to 17 Years of Age With Moderate to Severe Acne",
-   "m": "mRNA",
-   "p": "Phase 2",
-   "s": "Not Yet Recruiting",
-   "d": "2026-10-30",
-   "sp": "Sanofi",
-   "c": [
-    "Acne"
-   ],
-   "iv": [
-    "Acne mRNA (messenger ribonucleic acid) vaccine"
-   ],
-   "co": []
-  },
-  {
    "n": "NCT07868328",
    "t": "A Study to Evaluate the Safety, Tolerability and Pharmacodynamics of NIO752 in Primary Tauopathies",
    "m": "ASO",
@@ -205,6 +189,24 @@
    ],
    "co": [
     "United States"
+   ]
+  },
+  {
+   "n": "NCT07756957",
+   "t": "Safety of the Acne mRNA Vaccine in Adolescents 12 to 17 Years of Age With Moderate to Severe Acne",
+   "m": "mRNA",
+   "p": "Phase 1/Phase 2",
+   "s": "Recruiting",
+   "d": "2026-10-14",
+   "sp": "Sanofi",
+   "c": [
+    "Acne"
+   ],
+   "iv": [
+    "Acne mRNA (messenger ribonucleic acid) vaccine"
+   ],
+   "co": [
+    "Canada"
    ]
   },
   {
@@ -349,7 +351,7 @@
    "p": "Phase 2",
    "s": "Recruiting",
    "d": "2026-09-24",
-   "sp": "Verve Therapeutics, Inc.",
+   "sp": "Eli Lilly and Company",
    "c": [
     "Atherosclerosis",
     "Cardiovascular Disease"
@@ -1744,7 +1746,8 @@
    ],
    "iv": [
     "ADX-038 Dose Level 2",
-    "ADX-038 Dose Level 1"
+    "ADX-038 Dose Level 1",
+    "ADX-038 Dose Level 3"
    ],
    "co": [
     "Australia",
@@ -2817,7 +2820,7 @@
    "p": "Phase 1",
    "s": "Recruiting",
    "d": "2024-10-30",
-   "sp": "Verve Therapeutics, Inc.",
+   "sp": "Eli Lilly and Company",
    "c": [
     "Hypercholesterolemia",
     "Hypertriglyceridemia"
@@ -3318,7 +3321,7 @@
    "p": "Phase 1",
    "s": "Recruiting",
    "d": "2024-04-30",
-   "sp": "Verve Therapeutics, Inc.",
+   "sp": "Eli Lilly and Company",
    "c": [
     "Heterozygous Familial Hypercholesterolemia",
     "Premature Coronary Heart Disease"
@@ -5205,7 +5208,7 @@
    "p": "Phase 1",
    "s": "Completed",
    "d": "2022-07-05",
-   "sp": "Verve Therapeutics, Inc.",
+   "sp": "Eli Lilly and Company",
    "c": [
     "Heterozygous Familial Hypercholesterolemia",
     "Atherosclerotic Cardiovascular Disease"
