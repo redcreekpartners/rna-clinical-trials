@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-19T19:52:20+00:00",
+ "generated_at": "2026-11-23T23:15:07+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -976,7 +976,7 @@
    "t": "Novel RNA-lipid Particle (RNA-LP) Vaccine for Anti-PD-1 Antibody Therapy Sensitization",
    "m": "mRNA",
    "p": "Phase 1",
-   "s": "Suspended",
+   "s": "Recruiting",
    "d": "2026-03-17",
    "sp": "University of Florida",
    "c": [
