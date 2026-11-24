@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-23T23:15:07+00:00",
+ "generated_at": "2026-11-24T21:50:59+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -20,6 +20,23 @@
    "co": [
     "Germany"
    ]
+  },
+  {
+   "n": "NCT07245901",
+   "t": "Safety and Tolerability of a mRNA Vaccine Encoding Tumor-Specific Circular RNA Antigens in Combination With Anti-PD-1 Monoclonal Antibody in Patients With Advanced Solid Tumors",
+   "m": "mRNA",
+   "p": "Phase 1/Phase 2",
+   "s": "Not Yet Recruiting",
+   "d": "2027-02-01",
+   "sp": "Sun Yat-Sen Memorial Hospital of Sun Yat-Sen University",
+   "c": [
+    "Solid Tumor"
+   ],
+   "iv": [
+    "circFAM53B mRNA vaccine",
+    "toripalimab"
+   ],
+   "co": []
   },
   {
    "n": "NCT07943598",
@@ -158,7 +175,7 @@
    "t": "RBD1119 in Coronary Artery Disease (CAD)",
    "m": "siRNA",
    "p": "Phase 2",
-   "s": "Not Yet Recruiting",
+   "s": "Recruiting",
    "d": "2026-10-16",
    "sp": "Ribocure Pharmaceuticals AB",
    "c": [
@@ -168,6 +185,29 @@
     "RBD1119"
    ],
    "co": [
+    "Poland",
+    "Sweden"
+   ]
+  },
+  {
+   "n": "NCT07870889",
+   "t": "Vortosiran in Atrial Fibrillation",
+   "m": "siRNA",
+   "p": "Phase 2",
+   "s": "Recruiting",
+   "d": "2026-10-15",
+   "sp": "Ribocure Pharmaceuticals AB",
+   "c": [
+    "Non-valvular Atrial Fibrillation (AF)"
+   ],
+   "iv": [
+    "Vortosiran",
+    "Vortosiran",
+    "Apixaban"
+   ],
+   "co": [
+    "Denmark",
+    "Norway",
     "Poland",
     "Sweden"
    ]
@@ -263,29 +303,6 @@
    ],
    "co": [
     "United States"
-   ]
-  },
-  {
-   "n": "NCT07870889",
-   "t": "Vortosiran in Atrial Fibrillation",
-   "m": "siRNA",
-   "p": "Phase 2",
-   "s": "Not Yet Recruiting",
-   "d": "2026-10-01",
-   "sp": "Ribocure Pharmaceuticals AB",
-   "c": [
-    "Non-valvular Atrial Fibrillation (AF)"
-   ],
-   "iv": [
-    "Vortosiran",
-    "Vortosiran",
-    "Apixaban"
-   ],
-   "co": [
-    "Denmark",
-    "Norway",
-    "Poland",
-    "Sweden"
    ]
   },
   {
@@ -464,6 +481,27 @@
    ],
    "co": [
     "South Africa",
+    "United States"
+   ]
+  },
+  {
+   "n": "NCT06736379",
+   "t": "Intratumoral Delivery of Viral Replicon (saRNA) Particles Expressing IL-12 in Head and Neck Cancer",
+   "m": "saRNA",
+   "p": "Phase 1",
+   "s": "Recruiting",
+   "d": "2026-08-01",
+   "sp": "VLP Therapeutics",
+   "c": [
+    "Head and Neck Cancers- Squamous Cell",
+    "Head and Neck Cancer"
+   ],
+   "iv": [
+    "VRP-encapsulated saRNA encoding IL-12 (1 x 10^9 viral particles per injection)",
+    "Pembrolizumab (KEYTRUDA®)",
+    "VRP-encapsulated saRNA encoding IL-12 (3 x 10^8 viral particles per injection)"
+   ],
+   "co": [
     "United States"
    ]
   },
@@ -1323,23 +1361,6 @@
    ]
   },
   {
-   "n": "NCT07245901",
-   "t": "Safety and Tolerability of a mRNA Vaccine Encoding Tumor-Specific Circular RNA Antigens in Combination With Anti-PD-1 Monoclonal Antibody in Patients With Advanced Solid Tumors",
-   "m": "mRNA",
-   "p": "Phase 1/Phase 2",
-   "s": "Not Yet Recruiting",
-   "d": "2025-12-05",
-   "sp": "Sun Yat-Sen Memorial Hospital of Sun Yat-Sen University",
-   "c": [
-    "Solid Tumor"
-   ],
-   "iv": [
-    "circFAM53B mRNA vaccine",
-    "toripalimab"
-   ],
-   "co": []
-  },
-  {
    "n": "NCT07306299",
    "t": "A Phase I Clinical Trial of a mRNA Vaccine for Recurrent or Progressive High-grade Glioma",
    "m": "mRNA",
@@ -1839,7 +1860,7 @@
    "t": "Phase 1 Study of ADX-626 in Healthy Participants",
    "m": "siRNA",
    "p": "Phase 1",
-   "s": "Recruiting",
+   "s": "Active Not Recruiting",
    "d": "2025-08-12",
    "sp": "ADARx Pharmaceuticals, Inc.",
    "c": [
@@ -2102,27 +2123,6 @@
    ],
    "iv": [
     "nL-ASXL3-001"
-   ],
-   "co": [
-    "United States"
-   ]
-  },
-  {
-   "n": "NCT06736379",
-   "t": "Intratumoral Delivery of Viral Replicon (saRNA) Particles Expressing IL-12 in Head and Neck Cancer",
-   "m": "saRNA",
-   "p": "Phase 1",
-   "s": "Recruiting",
-   "d": "2025-05-13",
-   "sp": "VLP Therapeutics",
-   "c": [
-    "Head and Neck Cancers- Squamous Cell",
-    "Head and Neck Cancer"
-   ],
-   "iv": [
-    "VRP-encapsulated saRNA encoding IL-12 (1 x 10^9 viral particles per injection)",
-    "Pembrolizumab (KEYTRUDA®)",
-    "VRP-encapsulated saRNA encoding IL-12 (3 x 10^8 viral particles per injection)"
    ],
    "co": [
     "United States"
