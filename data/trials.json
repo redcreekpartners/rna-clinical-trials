@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-24T21:50:59+00:00",
+ "generated_at": "2026-11-25T20:58:13+00:00",
  "source": "ClinicalTrials.gov API v2",
  "records": [
   {
@@ -400,6 +400,25 @@
    ]
   },
   {
+   "n": "NCT07712692",
+   "t": "Evaluation of NWRD09 for HPV-16 Related Cervical HSIL",
+   "m": "siRNA",
+   "p": "Phase 2",
+   "s": "Recruiting",
+   "d": "2026-09-09",
+   "sp": "Newish Biotech (Wuxi) Co., Ltd.",
+   "c": [
+    "High-grade Squamous Intraepithelial Lesion (HSIL)"
+   ],
+   "iv": [
+    "NWRD09 Injection",
+    "NWRD09 Placebo"
+   ],
+   "co": [
+    "China"
+   ]
+  },
+  {
    "n": "NCT07805707",
    "t": "A Study on the Efficacy of a Vaccine Against Influenza in Adults ≥65 Years of Age",
    "m": "mRNA",
@@ -482,46 +501,6 @@
    "co": [
     "South Africa",
     "United States"
-   ]
-  },
-  {
-   "n": "NCT06736379",
-   "t": "Intratumoral Delivery of Viral Replicon (saRNA) Particles Expressing IL-12 in Head and Neck Cancer",
-   "m": "saRNA",
-   "p": "Phase 1",
-   "s": "Recruiting",
-   "d": "2026-08-01",
-   "sp": "VLP Therapeutics",
-   "c": [
-    "Head and Neck Cancers- Squamous Cell",
-    "Head and Neck Cancer"
-   ],
-   "iv": [
-    "VRP-encapsulated saRNA encoding IL-12 (1 x 10^9 viral particles per injection)",
-    "Pembrolizumab (KEYTRUDA®)",
-    "VRP-encapsulated saRNA encoding IL-12 (3 x 10^8 viral particles per injection)"
-   ],
-   "co": [
-    "United States"
-   ]
-  },
-  {
-   "n": "NCT07712692",
-   "t": "Evaluation of NWRD09 for HPV-16 Related Cervical HSIL",
-   "m": "siRNA",
-   "p": "Phase 2",
-   "s": "Not Yet Recruiting",
-   "d": "2026-08-01",
-   "sp": "Newish Biotech (Wuxi) Co., Ltd.",
-   "c": [
-    "High-grade Squamous Intraepithelial Lesion (HSIL)"
-   ],
-   "iv": [
-    "NWRD09 Injection",
-    "NWRD09 Placebo"
-   ],
-   "co": [
-    "China"
    ]
   },
   {
@@ -1871,6 +1850,27 @@
    ],
    "co": [
     "United Kingdom"
+   ]
+  },
+  {
+   "n": "NCT06736379",
+   "t": "Intratumoral Delivery of Viral Replicon (saRNA) Particles Expressing IL-12 in Head and Neck Cancer",
+   "m": "saRNA",
+   "p": "Phase 1",
+   "s": "Recruiting",
+   "d": "2025-08-07",
+   "sp": "VLP Therapeutics",
+   "c": [
+    "Head and Neck Cancers- Squamous Cell",
+    "Head and Neck Cancer"
+   ],
+   "iv": [
+    "VRP-encapsulated saRNA encoding IL-12 (1 x 10^9 viral particles per injection)",
+    "Pembrolizumab (KEYTRUDA®)",
+    "VRP-encapsulated saRNA encoding IL-12 (3 x 10^8 viral particles per injection)"
+   ],
+   "co": [
+    "United States"
    ]
   },
   {
